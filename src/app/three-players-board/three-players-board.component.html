@@ -1,0 +1,12 @@
+<div class="board">
+    <div class="row" *ngFor="let row of gameboard; let i = index">
+      <div class="cell" *ngFor="let cell of row; let j = index" (click)="makeMove(i, j)" [ngClass]="{'disabled': cell !== ''}">
+        {{ cell }}
+      </div>
+    </div>
+  </div>
+  <div *ngIf = "gameWinner || isDraw">
+      <p *ngIf = "gameWinner">Player <b>{{gameWinnerTxt}}</b> wins!</p>
+      <p *ngIf = "isDraw">It's a draw!</p>
+      <button (click)="resetGame()">Reset Game</button>
+  </div>
